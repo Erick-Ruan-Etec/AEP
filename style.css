@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+.item {
+    width: 300px;
+    background-color: rgb(53, 225, 255);
+    margin-bottom: 10px;
+}
