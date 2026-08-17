@@ -1,5 +1,5 @@
-const SUPABASE_URL = "https://vyqsplfiumuzwanqmkwt.supabase.co"
-const SUPABASE_KEY = "sb_publishable_5087vG-dBzrqvADod46k2Q_y5Um6KNI"
+const SUPABASE_URL = process.env.SUPABASE_URL
+const SUPABASE_KEY = process.env.SUPABASE_KEY
 
 const API_HEADERS = {
     "apikey": SUPABASE_KEY,
