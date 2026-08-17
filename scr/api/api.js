@@ -7,20 +7,15 @@ const API_HEADERS = {
     "Content-Type": "application/json"
 }
 
-async function register(name, pass) {
-    await fetch(`${SUPABASE_URL}/rest/v1/profiles`, {
-        method: "POST",
-        headers: API_HEADERS,
-        body: JSON.stringify({
-            name: "erick",
-            pass: "1234"
-        })
+async function list(table) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+        headers: API_HEADERS
     });
-    console.log("Sucesso")
+    const data = await res.json();
+    return data;
 }
 
-
-async function registerItem(name, desc, categ) {
+/* async function registerItem(name, desc, categ) {
     await fetch(`${SUPABASE_URL}/rest/v1/items`, {
         method: "POST",
         headers: API_HEADERS,
@@ -31,12 +26,4 @@ async function registerItem(name, desc, categ) {
         })
     });
     console.log("Sucesso");
-}
-
-async function list(table) {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
-        headers: API_HEADERS
-    });
-    const data = await res.json();
-    return data;
-}
+} */
