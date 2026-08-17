@@ -73,42 +73,24 @@ function isLoggedIn() {
 // FORMULÁRIO DE LOGIN
 // ========================
 
-document
-    .getElementById("loginForm")
-    .addEventListener("submit", async function (event) {
+document.getElementById("loginForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-        event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        const button = this.querySelector("button");
-
-        button.disabled = true;
-        button.textContent = "Entrando...";
-
-        const success = await login(email, password);
-
-        if (success) {
-
-            // Página que o usuário verá depois do login
-            window.location.href = "index.html";
-
-        } else {
-
-            alert("E-mail ou senha incorretos.");
-
-            button.disabled = false;
-            button.textContent = "Entrar";
-        }
-    });
+    if (await login(email, password)) {
+        window.location.href = "index.html";
+    } else {
+        alert("E-mail ou senha incorretos.");
+    }
+});
 
 
 
 // ========================
 // CRIAR ITEM
 // ========================
-
 async function registerItem(name, desc, categ) {
 
     const token = localStorage.getItem("access_token");
