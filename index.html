@@ -4,16 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RR</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AEP - Itens perdidos</title>
+
+    <link rel="stylesheet" href="scr/styles/style.css">
+    <link rel="stylesheet" href="scr/styles/itens.css">
 </head>
 
 <body>
-    <a href="itens.html">Ver itens perdidos</a>
-    <a href="login.html">Logar</a>
+    <header>
+        <div class="left">
+            <h1>AEP</h1>
+        </div>
+        <div class="nav">
+            <a href="login.html">Logar</a>
+        </div>
+        <div class="right">
+            <div class="menu">
+                <button id="menu">#</button>
+            </div>
+        </div>
+    </header>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <div class="itens">
+        <div class="categoria">
+            <select name="" id="">
+                <option value="">Selecione...</option>
+            </select>
+        </div>
+        <div id="data"></div>
+
+    </div>
+
+
+
+    <script src="scr/api/api.js"></script>
+    <script src="scr/api/itens.js"></script>
 </body>
 
 </html>
