@@ -1,6 +1,7 @@
 const lista = document.getElementById("data");
 
 async function render(filter) {
+    lista.innerHTML = "";
     const dados = await list("items");
 
     if (!filter) {
@@ -28,10 +29,14 @@ async function render(filter) {
         `
             lista.appendChild(div);
         });
+        console.log(filter)
     }
 
-
-
 }
+
+const category = document.getElementById("categoria");
+category.addEventListener("input", () => {
+    render(category.value);
+});
 
 render();

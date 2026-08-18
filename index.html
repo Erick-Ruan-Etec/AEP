@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="scr/styles/style.css">
     <link rel="stylesheet" href="scr/styles/itens.css">
+
+    <script async src="https://imgbb.com/upload.js" data-palette="green" data-auto-insert="html-embed-medium"></script>
 </head>
 
 <body>
@@ -28,16 +30,21 @@
 
 
     <div class="itens">
-        <div class="categoria">
-            <select name="" id="">
-                <option value="">Selecione...</option>
-            </select>
+        <div class="filtros">
+            <div class="categoria">
+                <select id="categoria">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Materiais">Materiais</option>
+                    <option value="Eletronicos">Eletrônicos</option>
+                </select>
+            </div>
+            <div class="nome">
+                <input type="text" id="nome" placeholder="nome...">
+            </div>
         </div>
         <div id="data"></div>
 
     </div>
-
-
 
     <script src="scr/api/api.js"></script>
     <script src="scr/api/itens.js"></script>

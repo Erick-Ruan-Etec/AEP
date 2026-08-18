@@ -19,7 +19,6 @@ async function list(table) {
     const text = await res.text();
 
     console.log("Status:", res.status);
-    console.log("Resposta:", text);
 
     if (!res.ok) {
         return [];
