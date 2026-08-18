@@ -14,8 +14,6 @@
     <p id="resultado"></p>
 
     <script>
-        const API_KEY = "f85959c6c5c7307779ec6b4ea4611278";
-
         const input = document.getElementById("imagem");
         const botao = document.getElementById("upload");
         const resultado = document.getElementById("resultado");
@@ -29,8 +27,6 @@
             }
 
             const formData = new FormData();
-
-            formData.append("key", API_KEY);
             formData.append("image", arquivo);
 
             try {
@@ -44,12 +40,12 @@
 
                 const dados = await resposta.json();
 
-                if (!dados.success) {
-                    throw new Error("Upload falhou.");
+                if (!resposta.ok || !dados.success) {
+                    throw new Error(dados.error || "Upload falhou.");
                 }
 
-                // URL gerada pelo ImgBB
-                const url = dados.data.url;
+                // URL retornada pela sua API
+                const url = dados.url;
 
                 console.log("URL:", url);
 
@@ -57,7 +53,8 @@
 
             } catch (erro) {
                 console.error(erro);
-                resultado.textContent = "Erro ao enviar a imagem.";
+                resultado.textContent = erro.message || "Erro ao enviar a imagem.";
+
             } finally {
                 botao.disabled = false;
             }
