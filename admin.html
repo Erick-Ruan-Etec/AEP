@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BETA</title>
+    <link rel="stylesheet" href="scr/styles/style.css">
+    <link rel="stylesheet" href="scr/styles/admin.css">
 </head>
+
 <body>
     <h1>BETA</h1>
+
+    <div class="add">
+        <label for="name">Nome do item</label>
+        <input type="text" id="name">
+
+        <label for="desc">Descrição do item</label>
+        <input type="text" id="desc">
+
+        <label for="categoria">Categoria do item</label>
+        <select name="categoria" id="categoria">
+            <option disabled selected>Selecione uma categoria</option>
+            <option value="materiais">Materiais</option>
+            <option value="eletronicos">Eletrônicos</option>
+        </select>
+        <button id="add-item">Adicionar item perdido</button>
+
+    </div>
+
+    <div id="itens"></div>
+
+    <script src="scr/api/admin.js">
+
+    </script>
 </body>
+
 </html>

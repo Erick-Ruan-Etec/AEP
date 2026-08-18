@@ -80,7 +80,7 @@ document.getElementById("loginForm").addEventListener("submit", async (event) =>
     const password = document.getElementById("password").value;
 
     if (await login(email, password)) {
-        window.location.href = "index.html";
+        window.location.href = "admin.html";
     } else {
         alert("E-mail ou senha incorretos.");
     }
