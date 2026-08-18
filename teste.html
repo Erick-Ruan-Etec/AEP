@@ -8,57 +8,53 @@
 </head>
 
 <body>
-    <input type="file" id="imagem" accept="image/*">
-    <button id="upload">Enviar imagem</button>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css">
 
-    <p id="resultado"></p>
+    <script type="module">
+        import * as UC from "https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.js";
 
-    <script>
-        const input = document.getElementById("imagem");
-        const botao = document.getElementById("upload");
-        const resultado = document.getElementById("resultado");
+        UC.defineComponents(UC);
+    </script>
 
-        botao.addEventListener("click", async () => {
-            const arquivo = input.files[0];
 
-            if (!arquivo) {
-                resultado.textContent = "Selecione uma imagem.";
-                return;
+    <uc-config ctx-name="my-uploader" dynamic-button-view-mode="plain" source-list="local, camera, dropbox, gdrive"
+        cdn-cname="https://5tibc5o33j.ucarecd.net/" pubkey="5c159b6ef4b0d281c52f"></uc-config>
+
+
+    <uc-file-uploader-regular ctx-name="my-uploader" class="uc-light" dynamic-button></uc-file-uploader-regular>
+
+
+    <uc-upload-ctx-provider ctx-name="my-uploader"></uc-upload-ctx-provider>
+
+
+    <input type="text" id="imagem-url" placeholder="A URL aparecerá aqui" readonly>
+
+
+    <script type="module">
+
+        const uploader = document.querySelector(
+            "uc-file-uploader-regular"
+        );
+
+        const urlInput = document.getElementById(
+            "imagem-url"
+        );
+
+
+        uploader.addEventListener(
+            "common-upload-success",
+            (event) => {
+
+                console.log("UPLOAD:");
+                console.log(event);
+
+                console.log("DETAIL:");
+                console.log(event.detail);
+
             }
+        );
 
-            const formData = new FormData();
-            formData.append("image", arquivo);
-
-            try {
-                botao.disabled = true;
-                resultado.textContent = "Enviando...";
-
-                const resposta = await fetch("/api/upload", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const dados = await resposta.json();
-
-                if (!resposta.ok || !dados.success) {
-                    throw new Error(dados.error || "Upload falhou.");
-                }
-
-                // URL retornada pela sua API
-                const url = dados.url;
-
-                console.log("URL:", url);
-
-                resultado.textContent = url;
-
-            } catch (erro) {
-                console.error(erro);
-                resultado.textContent = erro.message || "Erro ao enviar a imagem.";
-
-            } finally {
-                botao.disabled = false;
-            }
-        });
     </script>
 </body>
 

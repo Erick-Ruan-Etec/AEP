@@ -9,11 +9,14 @@ async function render(filter) {
             let div = document.createElement("div");
             div.classList.add("item");
 
+
             div.innerHTML = `
-        <p>Nome: ${el.name}</p>
-        <p>Descrição: ${el.desc}</p>
-        <p>Categoria: ${el.categ}</p>
+                <p>Nome: ${el.name} <img width="30px" src="${el.image}" alt=""></p>
+                <p>Descrição: ${el.desc}</p>
+                <p>Categoria: ${el.categ}</p>
+                
         `
+
             lista.appendChild(div);
         });
     } else {

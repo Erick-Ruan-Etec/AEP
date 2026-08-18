@@ -91,7 +91,7 @@ document.getElementById("loginForm").addEventListener("submit", async (event) =>
 // ========================
 // CRIAR ITEM
 // ========================
-async function registerItem(name, desc, categ) {
+async function registerItem(name, desc, categ, imageURL) {
 
     const token = localStorage.getItem("access_token");
 
@@ -111,7 +111,8 @@ async function registerItem(name, desc, categ) {
         body: JSON.stringify({
             name: name,
             desc: desc,
-            categ: categ
+            categ: categ,
+            image: imageURL
         })
     });
 
