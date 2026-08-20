@@ -4,51 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEP - Itens perdidos</title>
-
-    <link rel="stylesheet" href="scr/styles/style.css">
-    <link rel="stylesheet" href="scr/styles/itens.css">
-
-    <script async src="https://imgbb.com/upload.js" data-palette="green" data-auto-insert="html-embed-medium"></script>
+    <title>Achados E Perdidos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <div class="left">
-            <h1>AEP</h1>
-        </div>
-        <div class="nav">
-            <a href="login.html">Logar</a>
-        </div>
-        <div class="right">
-            <div class="menu">
-                <button id="menu">#</button>
-            </div>
+        <div class="logo">
+            <p>Achados <span style="color: #00ffff">&</span> Perdidos</p>
         </div>
     </header>
 
+    <main>
+        <div class="left">
+            <h2>Achados e perdidos</h2>
+            <p>Busque um item que você perdeu na lista, ou marque um item como perdido</p>
+        </div>
+        <div class="right">
+            <p>Visão geral</p>
+            <br>
 
-
-    <div class="itens">
-        <div class="filtros">
-            <div class="categoria">
-                <select id="categoria">
-                    <option selected disabled value="">Selecione...</option>
-                    <option value="">Nenhum</option>
-                    <option value="materiais">Materiais</option>
-                    <option value="eletronicos">Eletrônicos</option>
-                </select>
-            </div>
-            <div class="nome">
-                <input type="text" id="nome" placeholder="nome...">
+            <div class="counter">
+                <div class="perdidos">
+                    <p id="perdidos">0</p>
+                    <p>Itens</p>
+                </div>
+                <div class="devolvidos">
+                    <p id="devolvidos">0</p>
+                    <p>Devolvidos</p>
+                </div>
+                <div class="pendentes">
+                    <p id="pendentes">0</p>
+                    <p>Pendentes</p>
+                </div>
             </div>
         </div>
-        <div id="data"></div>
+    </main>
 
+    <div class="filtros">
+        <div class="nome">
+            <input id="nome" type="text" placeholder="Pesquisar item perdido...">
+        </div>
+
+        <div class="categorias">
+            <label for="todos">📁 Todos</label>
+            <input type="radio" name="todos" id="todos" value="">
+            <label for="eletronicos">⚡Eletrônicos</label>
+            <input type="radio" name="categoria" id="eletronicos" value="⚡Eletrônicos">
+
+            <label for="materiais">📗 Materiais</label>
+            <input type="radio" name="categoria" id="materiais" value="📗 Materiais">
+
+            <label for="acessorios">👓 Acessórios</label>
+            <input type="radio" name="categoria" id="acessorios">
+
+            <label for="outros">✨ Outros</label>
+            <input type="radio" name="categoria" id="outros">
+
+        </div>
     </div>
 
-    <script src="scr/api/api.js"></script>
-    <script src="scr/api/itens.js"></script>
+    <div id="lista"></div>
+
+    <script src="scr/api/supabase.js"></script>
+    <script src="scr/api/manage.js"></script>
+
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>
