@@ -137,7 +137,7 @@ async function deleteItem(id) {
 async function listItems() {
 
     const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/items?select=*`,
+        `${SUPABASE_URL}/rest/v1/items?select=*,categoria(nome)`,
         {
             method: "GET",
             headers: API_HEADERS
