@@ -9,7 +9,7 @@ const API_HEADERS = {
 async function list(table) {
 
     const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/${table}?select=*`,
+        `${SUPABASE_URL}/rest/v1/${table}?select=*,categoria(nome)`,
         {
             method: "GET",
             headers: API_HEADERS
