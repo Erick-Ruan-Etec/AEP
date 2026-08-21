@@ -29,7 +29,7 @@ async function render(filter, nome) {
             <div class="bottom">
                 <div class="left">
                
-                <p style="font-size: 15px; color: #00ffff">${el.categ}</p>
+                <p style="font-size: 15px; color: #00ffff">${el.categoria.nome}</p>
                     
                     <p style="font-size: 22px;font-weight: bold">${el.name} </p>
                     <p style="font-size: 15px">${el.desc}</p>
