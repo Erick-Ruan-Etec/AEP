@@ -2,75 +2,40 @@ const lista = document.getElementById("lista");
 const categs = document.querySelectorAll(".categorias input[type='radio']");
 const nome = document.getElementById("nome");
 
-async function render(filter, nome) {
-    lista.innerHTML = "";
-
+async function render() {
     const dados = await listItems();
 
-    let filtrados = dados;
+    const categSelecionada = document.querySelector(".categorias input[type='radio']:checked")?.value;
+    const termoBusca = nome.value.toLowerCase().trim();
 
-    if (filter) {
-        filtrados = filtrados.filter(el => el.categ === filter);
-        window.categ = filter;
-    }
+    const filtrados = dados.filter(item => {
+        const bateCategoria = !categSelecionada || categSelecionada === "0" || item.categ === Number(categSelecionada);
+        const bateNome = !termoBusca || item.name.toLowerCase().includes(termoBusca);
+        return bateCategoria && bateNome;
+    });
 
-    if (nome) {
-        filtrados = filtrados.filter(el => el.name.includes(nome));
-    }
+    const estaLogado = isLoggedIn();
 
-    filtrados.forEach(el => {
-        const div = document.createElement("div");
-        div.classList.add("item");
-
-        div.innerHTML = `
-         <div class="top">
-                <img src="${el.image}" alt>
+    lista.innerHTML = filtrados.map(el => `
+        <div class="item">
+            <div class="top">
+                <img src="${el.image}" alt="${el.name}">
             </div>
             <div class="bottom">
                 <div class="left">
-               
-                <p style="font-size: 15px; color: #00ffff">${el.categoria.nome}</p>
-                    
-                    <p style="font-size: 22px;font-weight: bold">${el.name} </p>
+                    <p style="font-size: 15px; color: #00ffff">${el.categoria?.nome || ""}</p>
+                    <p style="font-size: 22px; font-weight: bold">${el.name}</p>
                     <p style="font-size: 15px">${el.desc}</p>
                 </div>
-                <div class="manage">
-                    <button id="delete" onclick="deleteItem(${el.id})">Apagar</button>
+                <div class="manage" style="display: ${estaLogado ? 'block' : 'none'}">
+                    <button onclick="deleteItem(${el.id})">Apagar</button>
                 </div>
             </div>
-        `;
-
-        lista.appendChild(div);
-    });
-
-    const manage = document.querySelectorAll(".manage");
-
-    if (isLoggedIn()) {
-        manage.forEach((el) => {
-            el.style.display = "block";
-            console.log("Usuario logado")
-        });
-    } else {
-        manage.forEach((el) => {
-            el.style.display = "none";
-            console.log("Usuario não logado")
-
-        });
-    }
+        </div>
+    `).join("");
 }
 
+categs.forEach(radio => radio.addEventListener("change", render));
+nome.addEventListener("input", render);
 
-render("", "");
-
-categs.forEach((filter) => {
-    filter.addEventListener("click", () => {
-
-        let categ = filter.value;
-        if (window.categ == filter.value) { return };
-        render(categ);
-    });
-});
-
-nome.addEventListener("change", () => {
-    render(window.categ, nome.value);
-})
+render();
