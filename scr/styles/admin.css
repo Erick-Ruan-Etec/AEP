@@ -1,3 +1,48 @@
-* {
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h1,
+p,
+label {
     color: white;
+}
+
+.add {
+
+    width: 400px;
+    height: 400px;
+    background-color: red;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.add input,
+.add select,
+.add button {
+    color: black;
+    width: 100%;
+    min-height: 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.add button {
+    background-color: blue;
+}
+
+.add select {
+    background-color: white;
+    color: black;
 }
