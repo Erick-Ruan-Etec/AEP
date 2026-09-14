@@ -206,7 +206,7 @@ main .right>p {
 .bottom button:hover {
     opacity: 0.85;
 }
-
+input:checked {padding: 10px}
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     main {
