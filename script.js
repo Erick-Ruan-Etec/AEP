@@ -33,9 +33,6 @@ async function render() {
                     <p style="font-size: 22px; font-weight: bold">${el.name}</p>
                     <p style="font-size: 15px">${el.desc}</p>
                 </div>
-                <div class="manage" style="display: ${estaLogado ? 'block' : 'none'}">
-                    <button onclick="deleteItem(${el.id})">Apagar</button>
-                </div>
             </div>
         </div>
     `).join("");
