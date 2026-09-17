@@ -4,40 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achados E Perdidos</title>
+    <title>Achados e Perdidos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <p>Achados <span style="color: #00ffff">&</span> Perdidos</p>
+            <p>Achados <span>&</span> Perdidos</p>
         </div>
+        <a href="login.html" class="login">Login</a>
+        <button id="btnAdicionar">Adicionar item</button>
     </header>
 
     <main>
         <div class="left">
-            <h2>Achados e perdidos</h2>
-            <p>Busque um item que você perdeu na lista, ou marque um item como perdido</p>
-        </div>
-        <div class="right">
-            <p>Visão geral</p>
-            <br>
-
-            <div class="counter">
-                <div class="perdidos">
-                    <p id="perdidos">0</p>
-                    <p>Itens</p>
-                </div>
-                <div class="devolvidos">
-                    <p id="devolvidos">0</p>
-                    <p>Devolvidos</p>
-                </div>
-                <div class="pendentes">
-                    <p id="pendentes">0</p>
-                    <p>Pendentes</p>
-                </div>
-            </div>
+            <h2>Achados e Perdidos</h2>
+            <p>Busque um item retido na lista ou verifique o status de devolução.</p>
         </div>
     </main>
 
@@ -47,21 +30,20 @@
         </div>
 
         <div class="categorias">
-            <label for="todos" >📁 Todos</label>
-            <input type="radio" name="categoria" id="todos" value="0">
+            <input type="radio" name="categoria" id="todos" value="0" checked>
+            <label for="todos">Todos</label>
 
-            <label for="eletronicos">⚡Eletrônicos</label>
             <input type="radio" name="categoria" id="eletronicos" value="1">
+            <label for="eletronicos">Eletrônicos</label>
 
-            <label for="materiais">📗 Materiais</label>
             <input type="radio" name="categoria" id="materiais" value="2">
+            <label for="materiais">Materiais</label>
 
-            <label for="acessorios">👓 Acessórios</label>
             <input type="radio" name="categoria" id="acessorios" value="3">
+            <label for="acessorios">Acessórios</label>
 
-            <label for="outros">✨ Outros</label>
             <input type="radio" name="categoria" id="outros" value="4">
-
+            <label for="outros">Outros</label>
         </div>
     </div>
 
@@ -70,9 +52,13 @@
     <script src="scr/api/supabase.js"></script>
     <script src="scr/api/manage.js"></script>
 
-
     <script src="script.js"></script>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script src="itens.js"></script>
 </body>
 
 </html>

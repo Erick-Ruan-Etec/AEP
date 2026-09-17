@@ -6,11 +6,17 @@ async function render() {
     const dados = await listItems();
 
     const categSelecionada = document.querySelector(".categorias input[type='radio']:checked")?.value;
-    const termoBusca = nome.value.toLowerCase().trim();
+
+    let termoBusca = nome.value.toLowerCase().trim();
+
+
+    termoBusca = termoBusca.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+
 
     const filtrados = dados.filter(item => {
         const bateCategoria = !categSelecionada || categSelecionada === "0" || item.categ === Number(categSelecionada);
-        const bateNome = !termoBusca || item.name.toLowerCase().includes(termoBusca);
+        const bateNome = !termoBusca || item.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(termoBusca);
         return bateCategoria && bateNome;
     });
 
@@ -23,7 +29,7 @@ async function render() {
             </div>
             <div class="bottom">
                 <div class="left">
-                    <p style="font-size: 15px; color: #00ffff">${el.categoria?.nome || ""}</p>
+                    <p style="font-size: 15px; color: #24449b">${el.categoria?.nome || ""}</p>
                     <p style="font-size: 22px; font-weight: bold">${el.name}</p>
                     <p style="font-size: 15px">${el.desc}</p>
                 </div>
