@@ -51,13 +51,7 @@ function logout() {
 }
 
 
-// ========================
-// VERIFICAR LOGIN
-// ========================
 
-function isLoggedIn() {
-    return localStorage.getItem("isLogged") === "true";
-}
 
 // ========================
 // CRIAR ITEM

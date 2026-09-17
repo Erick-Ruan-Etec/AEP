@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylelogin.css">
     <title>Login</title>
 </head>
-
 <body>
 
-    <form id="loginForm">
-        <input id="email" type="email" placeholder="E-mail" required>
-        <input id="password" type="password" placeholder="Senha" required>
+    <div class="container">
 
-        <button type="submit">Entrar</button>
-    </form>
+        <a href="index.html">
+            <button class="btnVoltar">Voltar</button>
+        </a>
 
-    <script src="scr/api/supabase.js" defer></script>
-    <script src="scr/api/manage.js" defer></script>
+        <!-- Foto de cadastro acoplada acima do título -->
+        <div class="foto-cadastro">
+            <label for="inputFoto" title="Escolha sua foto">
+                <img width="100px" style="margin-bottom: -30px;" src="imagens/cad.png.png" alt="Foto do usuário" id="previewFoto">
+                <div class="icon-overlay"></div>
+            </label>
+            <input type="file" id="inputFoto" accept="image/*" style="display: none;">
+        </div>
 
-    <script src="scr/api/login.js" defer></script>
+        <h2>Login</h2>
+
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Digite seu Email">
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" placeholder="Digite sua senha">    
+        </form>
+
+        <button class="button btnEntrar" id="btnlogin">Entrar</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="login.js"></script>
 
 </body>
-
 </html>
